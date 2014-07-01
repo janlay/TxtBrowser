@@ -8,3 +8,10 @@
 --regex-txt=/^[ \t]+(figure[ \t]+[0-9a-zA-Z]+([.: ]([ \t]*.+)?)?$)/\1/f,Figures/i
 --regex-txt=/^[ \t]*(图[ \t]*[0-9a-zA-Z]+[.: ][ \t]*.+$)/\1/f,Figures/i
 --regex-txt=/^[ \t]*(表[ \t]*[0-9a-zA-Z]+[.: ][ \t]*.+$)/\1/t,Tables/i
+--regex-txt=/^[ \t　]*(第[一二三四五六七八九十百千零]+部[ \t　]*.*)$/\1/c,content/
+--regex-txt=/^[ \t　]*(第[一二三四五六七八九十百千零]+章[ \t　]*.*)$/>  \1/c,content/
+--regex-txt=/^[ \t　]*(第[一二三四五六七八九十百千零]+节[ \t　]*.*)$/>>   \1/c,content/
+--regex-txt=/^([一二三四五六七八九十]+[.]?[ \t]+)(.+$)/\1\2/c,content/
+--regex-txt=/^([一二三四五六七八九十]+、[ \t]*)(.+$)/\1\2/c,content/
+--regex-txt=/^[ \t]*(（[一二三四五六七八九十]+）[.]?[ \t]+)(.+$)/>  \1\2/c,content/
+--regex-txt=/^[ \t]*(（[一二三四五六七八九十]+）、[ \t]*)(.+$)/>  \1\2/c,content/

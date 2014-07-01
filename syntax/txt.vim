@@ -1,11 +1,11 @@
-"Script_name: txt.vim
-"Author: guoyoooping@163.com
-"Date: 2011/08/07
-"Release: 1.3.5
-"Description: syntax for plain/text.
-"Language: text/plain :)
-"Location: $HOME/.vim/syntax or $VIMRUNTIME/syntax/
-"Install_detail:
+" Script_name: txt.vim
+" Author: guoyoooping@163.com, yysfire@gmail.com
+" Last_modified: 2014-07-01 21:47
+" Release: 1.3.6
+" Description: syntax for plain/text.
+" Language: text/plain :)
+" Location: $HOME/.vim/syntax or $VIMRUNTIME/syntax/
+" Install_detail:
         "1. put this file in $HOME/.vim/syntax or $VIMRUNTIME/syntax/ 
         "2. Add the following line in your .vimrc:
         "syntax on "syntax highlighting on
@@ -42,11 +42,20 @@ syn match txtTitle "^\(\d\+\.\)\+\s*[^,。，]\+,"
 "标题文本: 汉字数字加'.、'打头，且该行不含,.。，标点符号
 syn match txtTitle "^\([一二三四五六七八九十][、.]\)\+\s*[^,。，]\+$"
 syn match txtTitle "^\([一二三四五六七八九十][、.]\)\+\s*[^,。，]\+,"
+syn match txtTitle "^\(\s*（\)*\([一二三四五六七八九十]\+）*[、. ]\)\+\s*[^,。，]\+$"
+syn match txtTitle "^\(\s*（\)*\([一二三四五六七八九十]\+[、. ]\)\+\s*[^,。，]\+[，,]"
+syn match txtTitle "^（\([一二三四五六七八九十]\+）*[、. ]\)\+\s*[^,。，]\+$"
+syn match txtTitle "^（\([一二三四五六七八九十]\+[、. ]\)\+\s*[^,。，]\+[，,]"
 
 "txtTitle: Lines start with digit
 "标题文本: 以数字打头, 中间有空格, 后跟任意文字. 且该行不含有,.。，标点符号
 syn match txtTitle "^\d\s\+.\+\s*[^,。，]$"
 syn match txtTitle "^\d\s\+.\+\s*[^,。，],"
+
+"标题文本: 网络小说标题
+syn match txtTitle "^.*第\?\([一二三四五六七八九十百千零]\)\+章\s*[^,。，]\+$"
+syn match txtTitle "^.*第\([0-9]\)\+章.*$"
+syn match txtTitle "^.*[序楔]\+\s*[^,。，]\+$"
 
 "txtList: Lines start with space and then '-+*.'
 "列表文本: 任意空格打头, 后跟一个[-+*.]
@@ -58,7 +67,7 @@ syn match txtList    '^\s*\zs(\=\([0-9]\+\|[a-zA-Z]\))'
 
 "txtList: Lines start with space and then digit and '.'
 "列表文本: 至少一个空格打头, [数字.]打头, 但随后不能跟数字(排除把5.5这样的文
-"本当成列表) 
+"本当成列表)
 syn match txtList "^\s\+\zs\d\+\.\d\@!"
 
 "txtApostrophe: text in the apostrophe
