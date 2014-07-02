@@ -1,9 +1,9 @@
 *txtbrowser*    Plugin for browsing plain text 
 
 For Vim version 6.0 and above
-"Author: ypguo<guoyoooping@163.com>
-"Date: 2011/08/07
-"Release version: 1.3.5
+#Author: ypguo<guoyoooping@163.com>
+#Date: 2011/08/07
+//Release version: 1.3.5
 
  1 Overview                                            |txt-introduction|
  2 Installation                                        |txt-install|
@@ -102,9 +102,9 @@ Don't forget to open the file and Use ":helptags ." to install help tag.
 
 3) Add the following line into your .vimrc file and restart your vim.
 
-syntax on "syntax highlighting on
-filetype plugin on
-au BufRead,BufNewFile *.txt setlocal ft=txt 
+|    syntax on "syntax highlighting on
+|    filetype plugin on
+|    au BufRead,BufNewFile *.txt setlocal ft=txt 
 
 [Note]Since the plugin name changed after release 1.1.1, If you update version
 before 1.1.1, please uninstall the old version at first.
