@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:    text/plain
 " Maintainer:  yysfire <yysfire@gmail.com>, guoyoooping <guoyoooping@163.com>
-" Last Update: 2014-07-02 15:41
+" Last Update: 2014-07-03 04:58
 " Release:     1.3.6
 
 " For version 5.x: Clear all syntax items
@@ -48,9 +48,9 @@ syn match txtNumber "\d\(\.\d\+\)*\.\?"
 
 "txtComment: Lines that start with '#'
 "以#号打头的行为注释文本
-syn match   txtComment '^#.*$' contains=@txtAlwaysContains,txtUrl
-"以//打头的行为注释文本
-syn region txtComment  matchgroup=txtComment start="^\/\/" end="$" contains=@txtAlwaysContains,txtUrl oneline
+syn match   txtComment '^#.*$' contains=@txtAlwaysContains,txtUrl,txtFilePath
+"以//打头的行为注释文本, 与Linux路径匹配冲突
+"syn region txtComment  matchgroup=txtComment start="^\/\/" end="$" contains=@txtAlwaysContains,txtUrl oneline
 
 "txtTitle: Lines start with digit and '.'
 "标题文本: 前面有任意个空格,数字.[数字.]打头, 并且该行里不含有,.。，等标点符号
@@ -143,7 +143,8 @@ syn match txtFilePath '\(\([a-zA-Z]:\)\{1}\\\+\([^\\?\/\*|<>:"]\+\\\+\)\+\)\(\([
 "relative windows file path
 syn match txtFilePath '\(\.\{1,2}\\\+\([^\\?\/\*|<>:"]\+\\\+\)\+\)\(\([^\\?\/\*|<>:"]\+\)\.\([^\.\\?\/\*|<>:"]\+\)\)'
 "linux/unix file path
-syn match txtFilePath '\(\(\~\/\+\)\?\(\.\{0,2}\)\/\+\([^\\?\/\*|<>:"\s]\+\/\+\)\+\)\(\([^\\?\/\*|<>:"\s]\+\)\.\([^\.\\?\/\*|<>:"\s]\+\)\)'
+syn match txtFilePath '\(\(\(\$[A-Z\-_]\+\)\|\~\|\(\.\{1,2}\)\)\/\+\([^\\?\/\*|<>:" ]\+\/\+\)*\)\(\([^\\?\/\*|<>:" ]*\)\.*\([^\.\\?\/\*|<>:" ]\+\)\)'
+syn match txtFilePath '\(\s\|^\)\@<=\(\/\+\([^ \\?\/*|<>:"]\+\/\+\)*\)\(\([^ \\?\/*|<>:"]*\)\.*\([^ \.\\?\/*|<>:"]\+\)\)'
 
 "email text:
 syn match txtEmailMsg '^\s*\(From\|De\|Sent\|To\|Para\|Date\|Data\|Assunto\|Subject\):.*'
