@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:    text/plain
 " Maintainer:  yysfire <yysfire@gmail.com>, guoyoooping <guoyoooping@163.com>
-" Last Update: 2014-07-02 12:08
+" Last Update: 2014-07-02 15:41
 " Release:     1.3.6
 
 " For version 5.x: Clear all syntax items
@@ -112,23 +112,23 @@ syn  region  txtQuotes    matchgroup=txtCPM  start="[‘]"  end="[’]"  contain
 
 
 "txtBrackets: text in the brackets
-syn region  txtBrackets  matchgroup=txtCPM  start="[《]"  end="[》]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtBrackets  matchgroup=txtCPM  start="[（]"  end="[）]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtBrackets  matchgroup=txtCPM  start="[『]"  end="[』]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtBrackets  matchgroup=txtCPM  start="[【]"  end="[】]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtBrackets  matchgroup=txtCPM  start="[﹝]"  end="[﹞]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtBrackets  matchgroup=txtCPM  start="[〔]"  end="[〕]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtBrackets  matchgroup=txtCPM  start="[〈]"  end="[〉]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtBrackets  matchgroup=txtCPM  start="[「]"  end="[」]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtBrackets  matchgroup=txtCPM  start="[〖]"  end="[〗]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtAngleBrackets matchgroup=txtEPM  start="<"  end=">"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
-"syn region  txtAngleBrackets matchgroup=txtEPM  start="<"  end=">"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-"syn region  txtParentesis    matchgroup=txtEPM  start="("  end=")"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
-syn region  txtParentesis    matchgroup=txtEPM  start="("  end=")"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtBrackets      matchgroup=txtEPM  start="\[" end="\]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
-"syn region  txtBrackets      matchgroup=txtEPM  start="\[" end="\]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-"syn region  txtBlock         matchgroup=txtEPM  start="{"  end="}"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
-syn region  txtBlock         matchgroup=txtEPM  start="{"  end="}"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets  matchgroup=txtCPM  start="[《]"  end="[》]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets  matchgroup=txtCPM  start="[（]"  end="[）]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets  matchgroup=txtCPM  start="[『]"  end="[』]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets  matchgroup=txtCPM  start="[【]"  end="[】]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets  matchgroup=txtCPM  start="[﹝]"  end="[﹞]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets  matchgroup=txtCPM  start="[〔]"  end="[〕]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets  matchgroup=txtCPM  start="[〈]"  end="[〉]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets  matchgroup=txtCPM  start="[「]"  end="[」]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets  matchgroup=txtCPM  start="[〖]"  end="[〗]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtAngleBrackets matchgroup=txtOperator  start="<"  end=">"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
+"syn region  txtAngleBrackets matchgroup=txtOperator  start="<"  end=">"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+"syn region  txtParentesis    matchgroup=txtOperator  start="("  end=")"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
+syn region  txtParentesis    matchgroup=txtOperator  start="("  end=")"   contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets      matchgroup=txtOperator  start="\[" end="\]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
+"syn region  txtBrackets      matchgroup=txtOperator  start="\[" end="\]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+"syn region  txtBlock         matchgroup=txtOperator  start="{"  end="}"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
+syn region  txtBlock         matchgroup=txtOperator  start="{"  end="}"   contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 
 "link url
 syn match txtUrl "\(http\|https\|ftp\|telnet\|file\|gopher\|wais\|ed2k\)://\(\w\|[\-&@%#=?\:\.\/]\)\+"
@@ -136,6 +136,14 @@ syn match txtUrl '\(www[23]\=\.\|ftp\.\)\(\w\|[\-&@%#=?\:\.\/]\)\+'
 " Email
 syn match txtUrl "\(mailto:\)\?\([a-zA-Z0-9_\-\.]\+\)@\(\([0-9]\{1,3}\.[0-9]\{1,3}\.[0-9]\{1,3}\.\)\|\(\([a-zA-Z0-9\-]\+\.\)\+\)\)\([a-zA-Z]\{2,4}\|[0-9]\{1,3}\)"
 
+
+"file path
+"absolute windows file path
+syn match txtFilePath '\(\([a-zA-Z]:\)\{1}\\\+\([^\\?\/\*|<>:"]\+\\\+\)\+\)\(\([^\\?\/\*|<>:"]\+\)\.\([^\.\\?\/\*|<>:"]\+\)\)'
+"relative windows file path
+syn match txtFilePath '\(\.\{1,2}\\\+\([^\\?\/\*|<>:"]\+\\\+\)\+\)\(\([^\\?\/\*|<>:"]\+\)\.\([^\.\\?\/\*|<>:"]\+\)\)'
+"linux/unix file path
+syn match txtFilePath '\(\(\~\/\+\)\?\(\.\{0,2}\)\/\+\([^\\?\/\*|<>:"\s]\+\/\+\)\+\)\(\([^\\?\/\*|<>:"\s]\+\)\.\([^\.\\?\/\*|<>:"\s]\+\)\)'
 
 "email text:
 syn match txtEmailMsg '^\s*\(From\|De\|Sent\|To\|Para\|Date\|Data\|Assunto\|Subject\):.*'
@@ -155,6 +163,35 @@ syn match txtChangelogs         "\<fix\>\s*:" contains=txtOperator
 "类html文本
 "syn match   txtBold       '\*[^*[:blank:]].\{-}\*'hs=s+1,he=e-1
 "syn match txtItalic "^\s\+.\+$" "斜体文本
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Some Vim help syntax group
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("ebcdic")
+  syn match helpHyperTextJump	"\\\@<!|[^"*|]\+|" contains=helpBar
+  syn match helpHyperTextEntry	"\*[^"*|]\+\*\s"he=e-1 contains=helpStar
+  syn match helpHyperTextEntry	"\*[^"*|]\+\*$" contains=helpStar
+else
+  syn match helpHyperTextJump	"\\\@<!|[#-)!+-~]\+|" contains=helpBar
+  syn match helpHyperTextEntry	"\*[#-)!+-~]\+\*\s"he=e-1 contains=helpStar
+  syn match helpHyperTextEntry	"\*[#-)!+-~]\+\*$" contains=helpStar
+endif
+if has("conceal")
+  syn match helpBar		contained "|" conceal
+  syn match helpBacktick	contained "`" conceal
+  syn match helpStar		contained "\*" conceal
+else
+  syn match helpBar		contained "|"
+  syn match helpBacktick	contained "`"
+  syn match helpStar		contained "\*"
+endif
+syn match helpNormal		"|.*====*|"
+syn match helpNormal		"|||"
+syn match helpNormal		":|vim:|"	" for :help modeline
+syn match helpNormal		"<---*>"
+syn match helpCommand		"`[^` \t]\+`"hs=s+1,he=e-1 contains=helpBacktick
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color definitions (specific)
@@ -177,19 +214,26 @@ HiLink txtBlock         Special
 HiLink txtBrackets      Special
 HiLink txtParentesis    Special
 HiLink txtAngleBrackets Special
+HiLink txtNumber      Number
+HiLink txtOperator    Operator
+HiLink txtUrl         Underlined
+HiLink txtFilePath    Underlined
+HiLink txtTitle       Title
+HiLink txtList        SignColumn
+HiLink txtComment     Comment
+HiLink txtReference   Normal
+HiLink txtError       ErrorMsg
+HiLink txtTodo        Todo
+HiLink txtDebug       Debug
+HiLink txtChangelogs  Keyword
+HiLink txtEmailMsg    Structure
 
-HiLink  txtNumber      Number
-HiLink  txtOperator    Operator
-HiLink  txtUrl        Underlined
-HiLink  txtTitle       Title
-HiLink  txtList        SignColumn
-HiLink  txtComment    Comment
-HiLink  txtReference   Normal
-HiLink  txtError       Error
-HiLink  txtTodo        Todo
-HiLink  txtDebug       Debug
-HiLink  txtChangelogs  Keyword
-HiLink  txtEmailMsg    Structure
+HiLink helpHyperTextJump	Identifier
+HiLink helpBar		Ignore
+HiLink helpBacktick	Ignore
+HiLink helpStar		Ignore
+HiLink helpHyperTextEntry	String
+HiLink helpCommand		Comment
 
 delcommand HiLink
 
