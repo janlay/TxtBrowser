@@ -28,7 +28,7 @@ syn keyword txtTodo todo fixme note comment notice
 syn keyword txtError error bug caution dropped
 syn keyword txtDebug warning debug
 
-syn cluster txtAlwaysContains add=txtTodo,txtError,txtDebug
+syn cluster txtAlwaysContains add=txtTodo,txtError,txtDebug,txtUrl
 syn cluster txtNormalContains add=txtNumber,txtUrl,txtCPM
 syn cluster txtBracketsContains  add=txtBlock,txtParentesis,txtBrackets,txtAngleBrackets
 syn cluster txtQuoteContains  add=txtQuotes,txtApostrophe
@@ -44,7 +44,8 @@ syn match txtEPM "[_:\.,!?]"
 syn match txtCPM "[，。；：！？、《》【】“”‘’（）『』「」〖〗﹝﹞〔〕〈〉…￥·■◆▲●★□◇△○☆＄‰￥℃※±⑴⑵⑶⑷⑸⑹⑺⑻⑼⑽⑾⑿⒀⒁⒂⒃⒄⒅⒆⒇⒈⒉⒊⒋⒌⒍⒎⒏⒐⒑⒒⒓⒔⒕⒖⒗⒘⒙⒚⒛①②③④⑤⑥⑦⑧⑨⑩㈠㈡㈢㈣㈤㈥㈦㈧㈨㈩→←↑↓§№◎ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ≈≡≠＝≤≥＜＞≮≯∷±＋－×÷／∫∮∝∞∧∨∑∏∪∩∈∵∴⊥∥∠⌒⊙≌∽√°¤￠〇]"
 
 " Numbers
-syn match txtNumber "\d\(\.\d\+\)*\.\?"
+syn match txtNumber /\d\.\?\d*\>/
+syn match txtNumber /0x[0-9a-f]\+/
 
 "txtComment: Lines that start with '#'
 "以#号打头的行为注释文本
@@ -56,10 +57,7 @@ syn match   txtComment '^#.*$' contains=@txtAlwaysContains,txtUrl,txtFilePath
 "标题文本: 前面有任意个空格,数字.[数字.]打头, 并且该行里不含有,.。，等标点符号
 "
 syn match txtTitle "^\(\d\+ \)\+\s*[^,。，]\+$"
-syn match txtTitle "^\(\d\+ \)\+\s*[^,。，]\+$"
-"
 syn match txtTitle "^\(\d\+\.\)\+\s*[^,。，]\+$"
-syn match txtTitle "^\(\d\+\.\)\+\s*[^,。，]\+,"
 
 "txtTitle: Lines start with Chinese digit and '.'
 "标题文本: 汉字数字加'.、'打头，且该行不含,.。，标点符号
@@ -80,7 +78,7 @@ syn match txtTitle "^\d\+、.\+\s*[^,。，]$"
 "标题文本: 网络小说标题
 syn match txtTitle "^.*第\?\([一二三四五六七八九十百千零]\)\+章\s*[^,。，]\+$"
 syn match txtTitle "^.*第\([0-9]\)\+章.*$"
-syn match txtTitle "^.*[序楔]\+\s*[^,。，]\+$"
+syn match txtTitle "^.*[序楔]\s*[^,。，]\+$"
 
 "txtList: Lines start with space and then '-+*.'
 "列表文本: 任意空格打头, 后跟一个[-+*.]
@@ -95,23 +93,11 @@ syn match txtList    '^\s*\zs(\=\([0-9]\+\|[a-zA-Z]\))'
 "本当成列表)
 syn match txtList "^\s\+\zs\d\+\.\d\@!"
 
-"txtApostrophe: text in the apostrophe
-"单引号内文字, 作用范围最多两行.
-"syn match   txtApostrophe  /'[^']\+\(\n\)\=[^']*'/ contains=@txtNormalContains,@txtAlwaysContains
+syn region  txtQuotes    matchgroup=txtEPM  start="\(\s\|^\)\@<='" end="'"  contains=@txtAlwaysContains
+syn region  txtQuotes    matchgroup=txtEPM  start=/"/ end=/"/  contains=@txtAlwaysContains
 
-"txtQuotes: text in the quotoes
-"双引号内文字, 包括全角半角, 作用范围最多两行
-"syn match   txtQuotes     '["][^"]\+\(\n\)\=[^"]*["]' contains=@txtNormalContains,@txtAlwaysContains
-
-"syn  region  txtQuotes    matchgroup=txtEPM  start=/'/ skip=/\\'/ end=/'/  contains=@txtNormalContains,@txtAlwaysContains oneline
-syn  region  txtQuotes    matchgroup=txtEPM  start="\(\s\|^\)\@<='" end="'"  contains=@txtNormalContains,@txtAlwaysContains
-"syn  region  txtQuotes    matchgroup=txtEPM  start=/"/ skip=/\\"/ end=/"/  contains=@txtNormalContains,@txtAlwaysContains
-syn  region  txtQuotes    matchgroup=txtEPM  start=/"/ end=/"/  contains=@txtNormalContains,@txtAlwaysContains
-syn  region  txtQuotes    matchgroup=txtCPM  start="[“]"  end="[”]"  contains=@txtNormalContains,@txtAlwaysContains
-syn  region  txtQuotes    matchgroup=txtCPM  start="[‘]"  end="[’]"  contains=@txtNormalContains,@txtAlwaysContains
-
-
-"txtBrackets: text in the brackets
+syn region  txtQuotes    matchgroup=txtCPM  start="[“]"  end="[”]"  contains=@txtNormalContains,@txtAlwaysContains
+syn region  txtQuotes    matchgroup=txtCPM  start="[‘]"  end="[’]"  contains=@txtNormalContains,@txtAlwaysContains
 syn region  txtBrackets  matchgroup=txtCPM  start="[《]"  end="[》]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 syn region  txtBrackets  matchgroup=txtCPM  start="[（]"  end="[）]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 syn region  txtBrackets  matchgroup=txtCPM  start="[『]"  end="[』]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
