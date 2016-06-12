@@ -47,6 +47,12 @@ syn match txtCPM "[，。；：！？、《》【】“”‘’（）『』「�
 syn match txtNumber /\d\.\?\d*\>/
 syn match txtNumber /0x[0-9a-f]\+/
 
+" Dates and Times
+syn match txtDate '\(\d\d\d\d-\)\?\d\d-\d\d'
+syn match txtDate '\(\d\d\d\d/\)\?\d\d/\d\d'
+syn match txtDate '\(\d\d\d\d-\)\?\d\d-\d\d \d\d:\d\d:\d\d\(\.\d\d\d\)\?'
+syn match txtDate '\(\d\d\d\d/\)\?\d\d/\d\d \d\d:\d\d:\d\d\(\.\d\d\d\)\?'
+
 "txtComment: Lines that start with '#'
 "以#号打头的行为注释文本
 syn match   txtComment '^#.*$' contains=@txtAlwaysContains,txtUrl,txtFilePath
@@ -93,11 +99,11 @@ syn match txtList    '^\s*\zs(\=\([0-9]\+\|[a-zA-Z]\))'
 "本当成列表)
 syn match txtList "^\s\+\zs\d\+\.\d\@!"
 
-syn region  txtQuotes    matchgroup=txtEPM  start="\(\s\|^\)\@<='" end="'"  contains=@txtAlwaysContains
-syn region  txtQuotes    matchgroup=txtEPM  start=/"/ end=/"/  contains=@txtAlwaysContains
+syn region  txtQuotes    matchgroup=txtQuotes  start="\(\s\|^\)\@<='" end="'"  contains=@txtAlwaysContains
+syn region  txtQuotes    matchgroup=txtQuotes  start=/"/ end=/"/  contains=@txtAlwaysContains
 
-syn region  txtQuotes    matchgroup=txtCPM  start="[“]"  end="[”]"  contains=@txtNormalContains,@txtAlwaysContains
-syn region  txtQuotes    matchgroup=txtCPM  start="[‘]"  end="[’]"  contains=@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets    matchgroup=txtCPM  start="[“]"  end="[”]"  contains=@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets    matchgroup=txtCPM  start="[‘]"  end="[’]"  contains=@txtNormalContains,@txtAlwaysContains
 syn region  txtBrackets  matchgroup=txtCPM  start="[《]"  end="[》]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 syn region  txtBrackets  matchgroup=txtCPM  start="[（]"  end="[）]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 syn region  txtBrackets  matchgroup=txtCPM  start="[『]"  end="[』]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
@@ -107,14 +113,10 @@ syn region  txtBrackets  matchgroup=txtCPM  start="[〔]"  end="[〕]"  contains
 syn region  txtBrackets  matchgroup=txtCPM  start="[〈]"  end="[〉]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 syn region  txtBrackets  matchgroup=txtCPM  start="[「]"  end="[」]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 syn region  txtBrackets  matchgroup=txtCPM  start="[〖]"  end="[〗]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtAngleBrackets matchgroup=txtOperator  start="<"  end=">"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
-"syn region  txtAngleBrackets matchgroup=txtOperator  start="<"  end=">"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-"syn region  txtParentesis    matchgroup=txtOperator  start="("  end=")"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
-syn region  txtParentesis    matchgroup=txtOperator  start="("  end=")"   contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-syn region  txtBrackets      matchgroup=txtOperator  start="\[" end="\]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
-"syn region  txtBrackets      matchgroup=txtOperator  start="\[" end="\]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
-"syn region  txtBlock         matchgroup=txtOperator  start="{"  end="}"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
-syn region  txtBlock         matchgroup=txtOperator  start="{"  end="}"   contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtAngleBrackets matchgroup=txtBrackets  start="<"  end=">"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
+syn region  txtParentesis    matchgroup=txtBrackets  start="("  end=")"   contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtBrackets      matchgroup=txtBrackets  start="\[" end="\]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
+syn region  txtBlock         matchgroup=txtBrackets  start="{"  end="}"   contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 
 "link url
 syn match txtUrl "\(http\|https\|ftp\|telnet\|file\|gopher\|wais\|ed2k\)://\(\w\|[\-&@%#=?\:\.\/]\)\+"
@@ -193,16 +195,15 @@ else
 endif
 
 "HiLink txtLetters      Normal
-HiLink txtCPM          Label
-HiLink txtEPM          String
-HiLink txtApostrophe   MoreMsg
-HiLink txtQuotes       MoreMsg
-HiLink txtBlock         Special
-HiLink txtBrackets      Special
-HiLink txtParentesis    Special
-HiLink txtAngleBrackets Special
+" HiLink txtCPM          Label
+" HiLink txtEPM          Label
+HiLink txtQuotes       String
+HiLink txtBlock         Label
+HiLink txtBrackets      Label
+HiLink txtParentesis    Label
+HiLink txtAngleBrackets Label
 HiLink txtNumber      Number
-HiLink txtOperator    Operator
+HiLink txtDate        Structure
 HiLink txtUrl         Underlined
 HiLink txtFilePath    Underlined
 HiLink txtTitle       Title
