@@ -114,7 +114,7 @@ syn region  txtBrackets  matchgroup=txtCPM  start="[〈]"  end="[〉]"  contains
 syn region  txtBrackets  matchgroup=txtCPM  start="[「]"  end="[」]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 syn region  txtBrackets  matchgroup=txtCPM  start="[〖]"  end="[〗]"  contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 syn region  txtAngleBrackets matchgroup=txtBrackets  start="<"  end=">"   contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
-syn region  txtParentesis    matchgroup=txtBrackets  start="("  end=")"   contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
+syn region  txtParentesis    matchgroup=txtBrackets  start="\(\s|\|^\)("  end=")"   contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 syn region  txtBrackets      matchgroup=txtBrackets  start="\[" end="\]"  contains=@txtBracketsContains,@txtNormalContains,@txtAlwaysContains  oneline
 syn region  txtBlock         matchgroup=txtBrackets  start="{"  end="}"   contains=@txtQuoteContains,@txtBracketsContains,@txtNormalContains,@txtAlwaysContains
 
