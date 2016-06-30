@@ -134,6 +134,8 @@ syn match txtFilePath '\(\.\{1,2}\\\+\([^\\?\/\*|<>:"]\+\\\+\)\+\)\(\([^\\?\/\*|
 syn match txtFilePath '\(\(\(\$[A-Z\-_]\+\)\|\~\|\(\.\{1,2}\)\)\/\+\([^\\?\/\*|<>:" ]\+\/\+\)*\)\(\([^\\?\/\*|<>:" ]*\)\.*\([^\.\\?\/\*|<>:" ]\+\)\)'
 syn match txtFilePath '\(\s\|^\)\@<=\(\/\+\([^ \\?\/*|<>:"]\+\/\+\)*\)\(\([^ \\?\/*|<>:"]*\)\.*\([^ \.\\?\/*|<>:"]\+\)\)'
 
+" code
+syn match txtCode '\(\w\+\.\)\+\w\+\>'
 "email text:
 syn match txtEmailMsg '^\s*\(From\|De\|Sent\|To\|Para\|Date\|Data\|Assunto\|Subject\):.*'
 "reference from reply email, quotes, etc.
@@ -215,6 +217,7 @@ HiLink txtTodo        Todo
 HiLink txtDebug       Debug
 HiLink txtChangelogs  Keyword
 HiLink txtEmailMsg    Structure
+HiLink txtCode        Structure
 
 HiLink helpHyperTextJump	Identifier
 HiLink helpBar		Ignore
