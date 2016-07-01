@@ -205,7 +205,7 @@ HiLink txtBrackets      Label
 HiLink txtParentesis    Label
 HiLink txtAngleBrackets Label
 HiLink txtNumber      Number
-HiLink txtDate        Structure
+HiLink txtDate        Comment
 HiLink txtUrl         Underlined
 HiLink txtFilePath    Underlined
 HiLink txtTitle       Title
@@ -217,7 +217,7 @@ HiLink txtTodo        Todo
 HiLink txtDebug       Debug
 HiLink txtChangelogs  Keyword
 HiLink txtEmailMsg    Structure
-HiLink txtCode        Structure
+HiLink txtCode        Identifier
 
 HiLink helpHyperTextJump	Identifier
 HiLink helpBar		Ignore
